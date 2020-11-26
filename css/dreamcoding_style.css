@@ -33,7 +33,7 @@
 
 /* universal tags */
 body {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
 }
 
 * {
@@ -98,7 +98,6 @@ p {
   align-items: center;
   color: var(--color-white);
   padding: 16px;
-  position: sticky;
 }
 
 .navbar__menu {
@@ -156,5 +155,12 @@ p {
   padding: 8px 12px;
   border: 2px solid var(--color-white);
   border-radius: 4px;
+  box-shadow: 0px 0px 10px var(--color-light-white);
   color: white;
+  transition: 0.3s linear;
+}
+
+.home__contact:hover {
+  padding: 10px 14px;
+  background-color: var(--color-dark-pink);
 }
