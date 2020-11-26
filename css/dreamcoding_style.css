@@ -5,7 +5,7 @@
   --color-white: #ffffff;
   --color-light-white: #eeeeee;
   --color-dark-white: #bdbdbd;
-  --color-pink: #fe918d;
+  --color-pink: #f5afad;
   --color-dark-pink: #ff6863;
   --color-dark-grey: #4d4d4d;
   --color-grey: #616161;
@@ -48,6 +48,13 @@ a {
   outline: 0;
 }
 
+button {
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
 /* Typography */
 
 h1 {
@@ -71,6 +78,10 @@ h3 {
   margin: 8px 0;
 }
 
+#home > h3 {
+  color: var(--color-light-white);
+}
+
 p {
   font-size: var(--font-regular);
   font-weight: var(--weight-regular);
@@ -79,13 +90,15 @@ p {
 }
 
 /* navbar */
+
 #navbar {
   display: flex;
   justify-content: space-between;
-  background-color: var(--color-pink);
+  background: linear-gradient(85deg, #e8a075, #b76ba9);
   align-items: center;
   color: var(--color-white);
   padding: 16px;
+  position: sticky;
 }
 
 .navbar__menu {
@@ -116,4 +129,32 @@ p {
 
 .navbar__menu__item.active {
   border: 1px solid white;
+}
+
+/* home */
+#home {
+  background: url("../images/BG_Gradient.png") center/cover no-repeat;
+  padding: 40px;
+  text-align: center;
+}
+
+.home__avatar {
+  width: 250px;
+  border-radius: 50%;
+  border: 1px solid var(--color-light-white);
+}
+
+.home__description,
+.home__title {
+  color: var(--color-white);
+}
+
+.home__contact {
+  font-size: var(--font-regular);
+  font-weight: var(--weight-bold);
+  margin: 24px;
+  padding: 8px 12px;
+  border: 2px solid var(--color-white);
+  border-radius: 4px;
+  color: white;
 }
