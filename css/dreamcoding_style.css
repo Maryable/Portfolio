@@ -1,5 +1,4 @@
 /* Global */
-
 :root {
   /* Color */
   --color-white: #ffffff;
@@ -29,6 +28,9 @@
 
   /* size */
   --size-border-raidus: 4px;
+
+  /* Animation */
+  --animation-duration: 300ms;
 }
 
 /* universal tags */
@@ -140,7 +142,7 @@ p {
 
 .home__avatar {
   margin-top: 50px;
-  width: 220px;
+  width: 200px;
   border-radius: 50%;
   border: 1px solid var(--color-light-white);
 }
@@ -165,4 +167,230 @@ p {
 .home__contact:hover {
   padding: 10px 14px;
   background-color: var(--color-dark-pink);
+}
+
+/* SECTION COMMON */
+.section {
+  margin: auto;
+  padding: 50px;
+  text-align: center;
+}
+
+.section__container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* about major */
+.about__majors {
+  margin: 80px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.major__icon {
+  width: 170px;
+  height: 170px;
+  line-height: 170px;
+  font-size: 70px;
+  background-color: white;
+  margin: auto;
+  color: var(--color-dark-grey);
+  /* color: #6950da; */
+  border: 1px solid var(--color-dark-white);
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+
+.major__icon i {
+  transition: var(--animation-duration);
+  /* 250~300ms가 가장 좋은 수치 */
+}
+.major__icon:hover i {
+  color: var(--color-dark-pink);
+  transform: rotate(-30deg) scale(1.1);
+}
+
+.major__title,
+.major__description {
+  color: var(--color-dark-grey);
+}
+.major__description {
+  font-size: var(--font-small);
+}
+
+.about__edu {
+  display: flex;
+  align-items: center;
+  text-align: left;
+}
+.about__edu img {
+  width: 30px;
+  height: 30px;
+  margin-right: 16px;
+}
+.about__edu p {
+  margin: 0 16px;
+  color: var(--color-light-grey);
+  font-size: var(--font-small);
+}
+
+.about__edu p:last-child {
+  font-size: var(--font-micro);
+}
+
+/* skills section */
+#skills {
+  display: flex;
+  background-color: var(--color-yellow);
+}
+
+.skillset {
+  display: flex;
+  background-color: var(--color-light-grey);
+  color: var(--color-light-white);
+  margin: 20px 0;
+}
+.skillset__title {
+  color: var(--color-light-white);
+}
+
+.skill_description {
+  display: flex;
+  justify-content: space-between;
+}
+.skillset__left {
+  flex-basis: 60%;
+  background-color: var(--color-dark-grey);
+  padding: 20px 40px;
+}
+
+.skill {
+  margin-bottom: 32px;
+}
+
+.skill__bar {
+  height: 3px;
+  width: 100%;
+  background-color: var(--color-grey);
+}
+
+.skill__value {
+  height: 3px;
+  background-color: var(--color-orange);
+}
+
+.skillset__right {
+  flex-basis: 40%;
+}
+
+.tools {
+  background-color: var(--color-grey);
+}
+
+.tools,
+.etc {
+  padding: 16px;
+}
+
+/* my work section */
+#work {
+}
+.work___categories {
+  margin: 40px;
+}
+.cartegory___btn {
+  border: 1px solid var(--color-dark-white);
+  border-radius: var(--size-border-raidus);
+  padding: 8px 48px;
+  font-size: var(--font-regular);
+}
+
+.cartegory___btn.active,
+.cartegory___btn:hover {
+  background-color: var(--color-dark-pink);
+  color: var(--color-white);
+}
+
+.cartegory___count {
+  display: inline-block;
+  background-color: var(--color-orange);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  color: var(--color-white);
+  line-height: 24px;
+  margin-left: 8px;
+  position: relative;
+  top: -20px;
+  left: 4px;
+  opacity: 0;
+  transition: all var(--animation-duration) ease-in;
+}
+
+.cartegory___btn.active .cartegory___count,
+.cartegory___btn:hover .cartegory___count {
+  opacity: 1;
+  top: 0;
+  /* 카테고리 버튼이 활성화 된 카테고리 카운트와, 
+  카테고리 버튼이 호버되었을 때 카테고리 카운트일 때 만! */
+}
+
+.work__projects {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.project {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 280px;
+  height: 250px;
+  margin: 2px;
+  background-color: var(--color-light-white);
+}
+
+.project___img {
+  max-width: 100%;
+  max-height: 100%;
+  /* 이미지는 프로젝트 박스 안에 담겨있기 때문에, 
+  자신이 담겨있는 통 안에서만 커지도록 설정 */
+}
+
+.project___description {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all var(--animation-duration) ease-in;
+}
+.project:hover .project___description {
+  opacity: 0.8;
+  transform: translateY(0px);
+}
+.project___description h3,
+.project___description span {
+  color: white;
+}
+
+.project___description h3::after {
+  content: "";
+  width: 25px;
+  height: 2px;
+  background-color: var(--color-dark-white);
+  display: block;
+  position: relative;
+  left: 50%;
+  margin-left: -12px;
+  margin-top: 8px;
 }
