@@ -394,3 +394,76 @@ p {
   margin-left: -12px;
   margin-top: 8px;
 }
+
+/* testimonials */
+#testimonials {
+  background-color: var(--color-light-white);
+  margin: 0 auto;
+}
+.testimonials {
+  margin: 40px;
+}
+
+.testimonial {
+  display: flex;
+  margin: 32px 0;
+}
+
+.testimonial___avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+.testimonial___avatar:nth-child(odd) {
+  margin-right: 40px;
+  /* odd number -홀수 */
+}
+
+.testimonial___avatar:nth-child(even) {
+  margin-left: 40px;
+  /* even number -짝수 */
+}
+
+.testimonial___speech-bubble {
+  padding: 18px;
+  background-color: var(--color-white);
+  border-radius: var(--size-border-raidus);
+}
+
+.testimonial___speech-bubble p {
+  color: var(--color-light-grey);
+}
+.testimonial___speech-bubble p > a {
+  color: var(col --color-dark-pink);
+  margin-right: 8px;
+}
+
+.testimonial___speech-bubble .name {
+  font-weight: var(--weight-semi-bold);
+}
+
+/* contact me  */
+#contact {
+  background-color: var(--color-pink);
+}
+
+.contact___email,
+.contatct___title,
+.contact___rights,
+.contact__links a{
+  color: var(--color-white);
+}
+
+.contatct___title {
+  margin: 32px 0;
+}
+
+.contact__links a i{
+  font-size: var(--font-large);
+  margin: 24px 0;
+  transition: all var(--animation-duration) ease;
+}
+
+.contact__links a i:hover {
+  transform: scale(1.1);
+  color: var(--color-yellow);
