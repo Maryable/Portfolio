@@ -1,0 +1,41 @@
+/* For below 768px screen width */
+@media screen and (max-width: 768px) {
+  .navbar__toggle-btn {
+    display: block;
+  }
+
+  #navbar {
+    flex-direction: column;
+    /* 왼쪽 정렬 */
+    align-items: flex-start;
+  }
+
+  .navbar__menu {
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+    /* 햄버거버튼을 클릭했을 때 나오도록 */
+    display: none;
+  }
+
+  .about__majors {
+    flex-direction: column;
+  }
+  .major {
+    margin-bottom: 38px;
+  }
+
+  .skillset {
+    flex-direction: column;
+  }
+
+  .project {
+    flex-grow: 1;
+    /* 화면을 알아서 채워줌 */
+  }
+
+  .testimonial___avatar {
+    width: 80px;
+    height: 80px;
+  }
+}
