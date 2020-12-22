@@ -94,9 +94,13 @@ p {
 /* navbar */
 
 #navbar {
+  position: fixed;
+  /* 포지션이 없다가 스크롤링 할 때 고정되도록
+  fixed를 주니까 부모 크기에서 벗어났으므로 너비 크기루 줘야 함. */
+  width: 100%;
   display: flex;
   justify-content: space-between;
-  background: linear-gradient(85deg, #e8a075, #b76ba9);
+  background: transparent;
   align-items: center;
   color: var(--color-white);
   padding: 16px;
@@ -139,35 +143,15 @@ p {
   right: 32px;
   font-size: 24px;
   color: var(--color-white);
-   /* 투명도만 주면 마우스를 올렸을 때 클릭이 되니까 display를 none으로 해야 함. */
+  /* 투명도만 주면 마우스를 올렸을 때 클릭이 되니까 display를 none으로 해야 함. */
   display: none;
 }
-
-/* For below 768px screen width */
-@media screen and (max-width:768px) {
-  .navbar__toggle-btn {
-    display: block;
-  }
-
-  #navbar {
-    flex-direction: column;
-    align-items: flex-start;
-    /* 왼쪽 정렬 */
-  }
-
-  .navbar__menu {
-    flex-direction: column;
-    text-align: center;
-    width: 100%;
-    display: none;
-  }
-}
-
 
 /* home */
 #home {
   background: url("../images/BG_Gradient.png") center/cover no-repeat;
   padding: 40px;
+  padding-top: 100px;
   text-align: center;
 }
 
@@ -481,7 +465,7 @@ p {
 .contact___email,
 .contatct___title,
 .contact___rights,
-.contact__links a{
+.contact__links a {
   color: var(--color-white);
 }
 
@@ -489,7 +473,7 @@ p {
   margin: 32px 0;
 }
 
-.contact__links a i{
+.contact__links a i {
   font-size: var(--font-large);
   margin: 24px 0;
   transition: all var(--animation-duration) ease;
@@ -498,3 +482,4 @@ p {
 .contact__links a i:hover {
   transform: scale(1.1);
   color: var(--color-yellow);
+}
