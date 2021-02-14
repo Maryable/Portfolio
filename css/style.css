@@ -35,7 +35,7 @@
 
 /* universal tags */
 body {
-  font-family: "Noto Sans KR", sans-serif;
+  font-family: 'Raleway', "Noto Sans KR";
 }
 
 * {
@@ -55,10 +55,10 @@ button {
   cursor: pointer;
   border: none;
   outline: none;
+  padding: 0; /* for iphone */
 }
 
 /* Typography */
-
 h1 {
   font-size: var(--font-large);
   font-weight: var(--weight-bold);
@@ -80,7 +80,7 @@ h3 {
   margin: 8px 0;
 }
 
-#home > h3 {
+#home h3 {
   color: var(--color-light-white);
 }
 
@@ -96,14 +96,17 @@ p {
 #navbar {
   position: fixed;
   /* 포지션이 없다가 스크롤링 할 때 고정되도록
-  fixed를 주니까 부모 크기에서 벗어났으므로 너비 크기루 줘야 함. */
+  fixed를 주니까 부모 크기에서 벗어났으므로 너비를 줘야 함. */
   width: 100%;
+  z-index: 1;
   display: flex;
   justify-content: space-between;
   background: transparent;
+  /* background-color: #C3789D ; */
   align-items: center;
   color: var(--color-white);
   padding: 16px;
+  transition: all var(--animation-duration) ease-in-out;
 }
 
 .navbar__menu {
@@ -124,18 +127,20 @@ p {
   padding: 8px 12px;
   margin: 0px 4px;
   cursor: pointer;
+  border: 1px solid transparent;
   border-radius: var(--size-border-raidus);
   transition: all 0.8s ease;
 }
 
 .navbar__menu__item:hover {
+  border-color: var(--color-yellow);
   background-color: var(--color-yellow);
   color: var(--color-dark-grey);
 }
 
-.navbar__menu__item.active {
+/* .navbar__menu__item.active {
   border: 1px solid var(--color-yellow);
-}
+} */
 
 .navbar__toggle-btn {
   position: absolute;
@@ -145,6 +150,11 @@ p {
   color: var(--color-white);
   /* 투명도만 주면 마우스를 올렸을 때 클릭이 되니까 display를 none으로 해야 함. */
   display: none;
+}
+
+#navbar.navbar--dark {
+  background-color: #C3789D ;
+  padding: 16px;
 }
 
 /* home */
@@ -174,13 +184,12 @@ p {
   padding: 8px 12px;
   border: 2px solid var(--color-white);
   border-radius: 4px;
-  box-shadow: 0px 0px 5px var(--color-light-white);
+  box-shadow: 0px 0px 4px var(--color-light-white);
   color: white;
   transition: 0.2s linear;
 }
 
 .home__contact:hover {
-  padding: 10px 14px;
   background-color: var(--color-dark-pink);
 }
 
@@ -207,11 +216,10 @@ p {
   width: 170px;
   height: 170px;
   line-height: 170px;
-  font-size: 70px;
+  font-size: 60px;
   background-color: white;
   margin: auto;
-  color: var(--color-dark-grey);
-  /* color: #6950da; */
+  color: var(--color-blue);
   border: 1px solid var(--color-dark-white);
   border-radius: 50%;
   margin-bottom: 20px;
@@ -223,7 +231,7 @@ p {
 }
 .major__icon:hover i {
   color: var(--color-dark-pink);
-  transform: rotate(-30deg) scale(1.1);
+  transform: rotate(-10deg) scale(1.2);
 }
 
 .major__title,
@@ -267,7 +275,8 @@ p {
   margin: 20px 0;
 }
 .skillset__title {
-  color: var(--color-light-white);
+  color: var(--color-dark-white);
+  font-size: 24px;
 }
 
 .skill_description {
@@ -295,6 +304,19 @@ p {
   background-color: var(--color-orange);
 }
 
+/* skillbar에서 value가 천천히 움직임 */
+@keyframes skillbar {
+  from {
+    width: 0;
+  }
+  to {
+  }
+}
+
+.skill__value.move {
+  animation: skillbar 2s 1;
+}
+
 .skillset__right {
   flex-basis: 40%;
 }
@@ -315,13 +337,14 @@ p {
   margin: 40px;
 }
 .cartegory___btn {
+  position: relative;
   border: 1px solid var(--color-dark-white);
   border-radius: var(--size-border-raidus);
   padding: 8px 48px;
   font-size: var(--font-regular);
 }
 
-.cartegory___btn.active,
+.cartegory___btn.selected,
 .cartegory___btn:hover {
   background-color: var(--color-dark-pink);
   color: var(--color-white);
@@ -335,15 +358,15 @@ p {
   border-radius: 50%;
   color: var(--color-white);
   line-height: 24px;
-  margin-left: 8px;
-  position: relative;
+  margin-left: 10px;
+  position: absolute;
   top: -20px;
-  left: 4px;
+  right: 8%;
   opacity: 0;
   transition: all var(--animation-duration) ease-in;
 }
 
-.cartegory___btn.active .cartegory___count,
+.cartegory___btn.selected .cartegory___count,
 .cartegory___btn:hover .cartegory___count {
   opacity: 1;
   top: 0;
@@ -355,6 +378,13 @@ p {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  opacity: 1;
+  transition: all var(--animation-duration) ease-;
+}
+
+.work__projects.ani-out {
+  opacity: 0.1;
+  transform: scale(0.98) translateY(30px);
 }
 
 .project {
@@ -366,6 +396,10 @@ p {
   height: 250px;
   margin: 2px;
   background-color: var(--color-light-white);
+}
+
+.project.invisible {
+  display: none;
 }
 
 .project___img {
@@ -393,19 +427,23 @@ p {
   opacity: 0.8;
   transform: translateY(0px);
 }
-.project___description h3,
+.project___description h3 {
+  color: var(--color-orange);
+  font-weight: 600;
+}
 .project___description span {
   color: white;
 }
 
 .project___description h3::after {
   content: "";
-  width: 25px;
-  height: 2px;
+  width: 60px;
+  height: 1px;
   background-color: var(--color-dark-white);
   display: block;
   position: relative;
   left: 50%;
+  transform: translateX(-50%);
   margin-left: -12px;
   margin-top: 8px;
 }
@@ -482,4 +520,30 @@ p {
 .contact__links a i:hover {
   transform: scale(1.1);
   color: var(--color-yellow);
+}
+
+/* Scroll arrow up button */
+.arrow-up {
+  position: fixed;
+  /* 포지션 fixed주면 부모에게서 빠져나옴 */
+  bottom: 50px;
+  right: 50px;
+  width: 60px;
+  height: 60px;
+  font-size: 40px;
+  line-height: 40px;
+  background: #BD71A3;
+  border-radius: 50%;
+  color: #fff;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 300ms ease-in;
+}
+
+.arrow-up.visible {
+  opacity: 1;
+  pointer-events: auto;
+  /* display:none, block을 사용하면 element가 아예 없어졌다가 나타나는것이므로 
+  애니메이션을 주기가 어렵고 동작하지 않기 때문에 투명도를 준다.
+  visible이라는 클래스는 자바스크립트를 위해서 css에서만 주는 것. */
 }
